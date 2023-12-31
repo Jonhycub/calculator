@@ -29,11 +29,9 @@ function operate(operator, num1, num2){
     return add(num1, num2);
   }else if(operator == '-'){
     return substract(num1, num2);
-  }else if(operator == '*'){
+  }else if(operator == 'x'){
     return multiply(num1, num2);
   }else if(operator == '÷'){
     return divide(num1, num2);
   }
 }
-
-console.log(operate('-', 100, 10));
