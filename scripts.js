@@ -36,12 +36,6 @@ function operate(operator, num1, num2){
   }
 }
 
-//Function to make sure the input is only a number or an operation symbol.
-function validateInput() {
-  let inputField = document.getElementById('myInput');
-  inputField.value = inputField.value.replace(/[^0-9+\-/.]/g, '');
-}
-
 //Store the display value in a variable
 let displayValue =  document.querySelector('.display-input').value;
 
@@ -79,8 +73,9 @@ button9.addEventListener('click', () =>{
 
 const buttonDivide = document.querySelector('#divide');
 buttonDivide.addEventListener('click', () =>{
-  displayValue += '÷';
-  populateDisplay();
+  num1 = Number(displayValue);
+  displayValue = '';
+  operator = '÷';
 });
 
 const button4 = document.querySelector('#four');
@@ -103,8 +98,9 @@ button6.addEventListener('click', () =>{
 
 const buttonMultiply = document.querySelector('#multiply');
 buttonMultiply.addEventListener('click', () =>{
-  displayValue += 'x';
-  populateDisplay();
+  num1 = Number(displayValue);
+  displayValue = '';
+  operator = 'x';
 });
 
 const button1 = document.querySelector('#one');
@@ -127,8 +123,9 @@ button3.addEventListener('click', () =>{
 
 const buttonSubtract = document.querySelector('#minus');
 buttonSubtract.addEventListener('click', () =>{
-  displayValue += '-';
-  populateDisplay();
+  num1 = Number(displayValue);
+  displayValue = '';
+  operator = '-';
 });
 
 // const buttonPoint = document.querySelector('#point');   Disabled for now to not have to deal with Floats
@@ -143,15 +140,18 @@ button0.addEventListener('click', () =>{
   populateDisplay();
 });
 
-const buttonEquals = document.querySelector('#equals');
-buttonEquals.addEventListener('click', () =>{
-  displayValue += '=';
-  populateDisplay();
-});
-
 const buttonAdd = document.querySelector('#plus');
 buttonAdd.addEventListener('click', () =>{
-  displayValue += '+';
+  num1 = Number(displayValue);
+  displayValue = '';
+  operator = '+';
+
+});
+
+const buttonEquals = document.querySelector('#equals');
+buttonEquals.addEventListener('click', () =>{
+  num2 = Number(displayValue);
+  displayValue = operate(operator, num1, num2);
   populateDisplay();
 });
 
@@ -160,5 +160,4 @@ function populateDisplay(){
   const display = document.querySelector('.display-input');
   display.value = displayValue;
 }
-
 
